@@ -88,191 +88,126 @@ def after_math_menu(layout, op_name):
         print(line)
         time.sleep(0.3)
     choice = input("Enter your choice (1-3): ")
+    if choice == "3":
+        print(acsii_cat_bye)
+        print("See you then!")
+        time.sleep(4)
+        sys.exit()
     return choice
+
+# after picking 1 in q2
+def ask_retry():
+    while True:
+        retry = str(input("Do you wanna try again? y/n: ")).strip().lower()
+        if retry == "y":
+            return True
+        elif retry == "n":
+            return False
+        else:
+            print("\033[31mOnly choose y or n! Nothing else... TT\033[0m")
+            time.sleep(2)
+
+# for errors inside the operations
+def user_error_input():
+    while True: 
+        try:
+            num1 = float(input("Enter your first number: "))
+            num2 = float(input("Enter your second number: "))
+            return num1, num2
+        except ValueError:
+            print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
+            time.sleep(2)
+        if not ask_retry():
+            return None, None
 
 #addition function
 def addition():
     typeslow_print("\n--- You chose Addition Mode! ---")
     typeslow_print("Let's pick some numbers, meow!")
     while True:
-        try:
-            num1 = float(input("Enter your first number: "))
-            num2 = float(input("Enter your second number: "))
-            time.sleep(0.5)
-            typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
-            typeslow_print("...", delay=0.5)
-            time.sleep(1)
-            result = num1 + num2
-            print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
-            time.sleep(1.5)
-
-            while True:
-                user_action = after_math_menu(q2, "Add")
-
-                if user_action == "1":
-                    break
-                elif user_action == "2":
-                    return
-                elif user_action == "3":
-                    print(acsii_cat_bye)
-                    print("See you then!")
-                    time.sleep(4)
-                    sys.exit()
-                else:
-                    print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-                    time.sleep(3)
-            continue
-
-        except ValueError:
-            print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-            time.sleep(3)
-            while True:
-                retry = str(input("Do you wanna try again? y/n "))
-                if retry == "y":
-                    break
-                elif retry == "n":
-                    return
-                else:
-                    print("\033[31mOnly choose y or n! Nothing else... TT\033[0m")
-                    time.sleep(3)
+      num1, num2 = user_error_input()
+        if num1 is None:
+            return
+        time.sleep(0.5)
+        typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
+        typeslow_print("...", delay=0.5)
+        time.sleep(1)
+        result = num1 + num2
+        print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
+        time.sleep(1.5)
+        user_action = after_math_menu(q2, "Add")
+        if user_action == "1":
+          continue
+        elif user_action == "2":
+          return
 
 #subtraction function
 def subtraction():
     typeslow_print("\n--- You chose Subtraction Mode! ---")
     typeslow_print("Let's pick some numbers, meow!")
     while True:
-        try:
-            num1 = float(input("Enter your first number: "))
-            num2 = float(input("Enter your second number: "))
-            time.sleep(0.5)
-            typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
-            typeslow_print("...", delay=0.5)
-            time.sleep(1)
-            result = num1 - num2
-            print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
-            time.sleep(1.5)
-
-            while True:
-                user_action = after_math_menu(q2, "Subtract")
-
-                if user_action == "1":
-                    break
-                elif user_action == "2":
-                    return
-                elif user_action == "3":
-                    print(acsii_cat_bye)
-                    print("See you then!")
-                    time.sleep(4)
-                    sys.exit()
-                else:
-                    print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-                    time.sleep(3)
+        num1, num2 = user_error_input()
+        if num1 is None:
+            return
+        time.sleep(0.5)
+        typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
+        typeslow_print("...", delay=0.5)
+        time.sleep(1)
+        result = num1 - num2
+        print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
+        time.sleep(1.5)
+        user_action = after_math_menu(q2, "Subtract")
+        if user_action == "1":
             continue
-
-        except ValueError:
-            print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-            time.sleep(3)
-            while True:
-                retry = str(input("Do you wanna try again? y/n "))
-                if retry == "y":
-                    break
-                elif retry == "n":
-                    return
-                else:
-                    print("\033[31mOnly choose y or n! Nothing else... TT\033[0m")
-                    time.sleep(3)
+        elif user_action == "2":
+            return
 
 # multiply function
 def multiplication():
     typeslow_print("\n--- You chose Multiplication Mode! ---")
     typeslow_print("Let's pick some numbers, meow!")
     while True:
-        try:
-            num1 = float(input("Enter your first number: "))
-            num2 = float(input("Enter your second number: "))
-            time.sleep(0.5)
-            typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
-            typeslow_print("...", delay=0.5)
-            time.sleep(1)
-            result = num1 * num2
-            print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
-            time.sleep(1.5)
-
-            while True:
-                user_action = after_math_menu(q2, "Multiply")
-
-                if user_action == "1":
-                    break
-                elif user_action == "2":
-                    return
-                elif user_action == "3":
-                    print(acsii_cat_bye)
-                    print("See you then!")
-                    time.sleep(4)
-                    sys.exit()
-                else:
-                    print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-                    time.sleep(3)
+        num1, num2 = user_error_input()
+        if num1 is None:
+            return
+        time.sleep(0.5)
+        typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
+        typeslow_print("...", delay=0.5)
+        time.sleep(1)
+        result = num1 / num2
+        print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
+        time.sleep(1.5)
+        user_action = after_math_menu(q2, "Multiply")
+        if user_action == "1":
             continue
-
-        except ValueError:
-            print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-            time.sleep(3)
-            while True:
-                retry = str(input("Do you wanna try again? y/n "))
-                if retry == "y":
-                    break
-                elif retry == "n":
-                    return
-                else:
-                    print("\033[31mOnly choose y or n! Nothing else... TT\033[0m")
-                    time.sleep(3)
+        elif user_action == "2":
+            return
 
 # divide function
 def division():
     typeslow_print("\n--- You chose Division Mode! ---")
     typeslow_print("Let's pick some numbers, meow!")
     while True:
-        try:
-            num1 = float(input("Enter your first number: "))
-            num2 = float(input("Enter your second number: "))
-            time.sleep(0.5)
-            typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
-            typeslow_print("...", delay=0.5)
-            time.sleep(1)
-            result = num1 / num2
-            print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
-            time.sleep(1.5)
-
-            while True:
-                user_action = after_math_menu(q2, "Divide")
-
-                if user_action == "1":
-                    break
-                elif user_action == "2":
-                    return
-                elif user_action == "3":
-                    print(acsii_cat_bye)
-                    print("See you then!")
-                    time.sleep(4)
-                    sys.exit()
-                else:
-                    print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-                    time.sleep(3)
+        num1, num2 = user_error_input()
+        if num1 is None:
+            return
+        if num2 == 0:
+            print("\033[31mError: You can't divide by zero! ₍^. .^₎Ⳋ\033[0m")
+            if not ask_retry():
+                return
             continue
-
-        except ValueError:
-            print("\033[31mPlease pick a number only! No letters or symbols. (╥﹏╥)\033[0m\n")
-            time.sleep(3)
-            while True:
-                retry = str(input("Do you wanna try again? y/n "))
-                if retry == "y":
-                    break
-                elif retry == "n":
-                    return
-                else:
-                    print("\033[31mOnly choose y or n! Nothing else... TT\033[0m")
-                    time.sleep(3)
+        time.sleep(0.5)
+        typeslow_print("\033[33mGive me a second to think /ᐠ˶>ﻌ<˶ᐟ\\ \033[0m")
+        typeslow_print("...", delay=0.5)
+        time.sleep(1)
+        result = num1 / num2
+        print(f"\033[32mThe answer is {result}, meow! ฅ^•⩊•^ ฅ\033[0m")
+        time.sleep(1.5)
+        user_action = after_math_menu(q2, "Divide")
+        if user_action == "1":
+            continue
+        elif user_action == "2":
+            return
 
 # leaving so soon?
 def exit():
