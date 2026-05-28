@@ -37,7 +37,7 @@ Upon running the code, a menu is prompted to the user.
   3. Exit 
 
 ## Contents of the Calculator
-This is gist of what the output shows in the code.
+This are the gist of what the output shows in the code.
 - A typewriting effect text in the code
 - Multiple choices to ask the user (integer or string)
 - A working calculator, the code asks the user for two numbers
